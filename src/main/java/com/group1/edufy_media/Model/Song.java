@@ -1,5 +1,9 @@
 package com.group1.edufy_media.Model;
 
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+
 /**
  * <code>Song</code> - Song Entity (Extends from Media)
  *
@@ -7,13 +11,30 @@ package com.group1.edufy_media.Model;
  * @version 0.0.1
  */
 
-public class Song extends Media{
+/**
+ * Future changes needed, future gotchas are some things that are transient now might need to be singular or plural.
+ */
+
+@Entity
+@Table(name = "song")
+public class Song extends Media implements Serializable {
 
     // -----------------------------------------------------------------------------------------------------------------
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    // Transient - This is excluded until we have a database and set relations.
+    @Transient
+    @JoinColumn(name = "artist_id")
     private ContentContributor artist;
+
+    // Relation needs to be inspected in the future.
+    @ManyToOne
+    @JoinColumn(name = "album_id")
     private Album album;
 
 
@@ -39,6 +60,14 @@ public class Song extends Media{
     // Getter & Setters
     // -----------------------------------------------------------------------------------------------------------------
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public ContentContributor getArtist() {
         return artist;
     }
@@ -55,6 +84,7 @@ public class Song extends Media{
         this.album = album;
     }
 
+
     // -----------------------------------------------------------------------------------------------------------------
     // Overwritten Methods
     // -----------------------------------------------------------------------------------------------------------------
@@ -62,7 +92,8 @@ public class Song extends Media{
     @Override
     public String toString() {
         return "Song{" +
-                "artist=" + artist +
+                "id=" + id +
+                ", artist=" + artist +
                 ", album=" + album +
                 '}';
     }
