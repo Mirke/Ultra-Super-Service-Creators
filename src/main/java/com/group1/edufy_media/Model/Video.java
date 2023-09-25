@@ -1,5 +1,7 @@
 package com.group1.edufy_media.Model;
 
+import jakarta.persistence.*;
+
 /**
  * <code>Video</code> - Video Entity (Extends from Media)
  *
@@ -7,13 +9,26 @@ package com.group1.edufy_media.Model;
  * @version 0.0.1
  */
 
+/**
+ * Future changes needed, future gotchas are some things that are transient now might need to be singular or plural.
+ */
+
+@Entity
+@Table(name = "video")
 public class Video extends Media{
 
     // -----------------------------------------------------------------------------------------------------------------
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
 
-    private ContentContributor contentContributor;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    // Transient - This is excluded until we have a database and set relations.
+    @Transient
+    @JoinColumn(name = "creator_id")
+    private ContentContributor creator;
 
     // -----------------------------------------------------------------------------------------------------------------
     // Constructor
@@ -24,20 +39,27 @@ public class Video extends Media{
 
     public Video(String name, Genre genre, MediaType mediaType, String releaseDate, ContentContributor contentContributor) {
         super(name, genre, mediaType, releaseDate);
-        this.contentContributor = contentContributor;
+        this.creator = contentContributor;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     // Getter & Setters
     // -----------------------------------------------------------------------------------------------------------------
 
-
-    public ContentContributor getContentContributor() {
-        return contentContributor;
+    public int getId() {
+        return id;
     }
 
-    public void setContentContributor(ContentContributor contentContributor) {
-        this.contentContributor = contentContributor;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ContentContributor getCreator() {
+        return creator;
+    }
+
+    public void setCreator(ContentContributor creator) {
+        this.creator = creator;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -47,7 +69,8 @@ public class Video extends Media{
     @Override
     public String toString() {
         return "Video{" +
-                "contentContributor=" + contentContributor +
+                "id=" + id +
+                ", creator=" + creator +
                 '}';
     }
 }

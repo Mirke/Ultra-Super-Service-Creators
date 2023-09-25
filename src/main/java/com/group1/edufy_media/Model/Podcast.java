@@ -1,5 +1,7 @@
 package com.group1.edufy_media.Model;
 
+import jakarta.persistence.*;
+
 /**
  * <code>Podcast</code> - Podcast Entity (Extends from Media)
  *
@@ -7,12 +9,25 @@ package com.group1.edufy_media.Model;
  * @version 0.0.1
  */
 
+/**
+ * Future changes needed, future gotchas are some things that are transient now might need to be singular or plural.
+ */
+
+@Entity
+@Table(name = "podcast")
 public class Podcast extends Media {
 
     // -----------------------------------------------------------------------------------------------------------------
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    // Transient - This is excluded until we have a database and set relations.
+    @Transient
+    @JoinColumn(name = "podcastCreator_id")
     private ContentContributor podcastCreator;
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -31,6 +46,14 @@ public class Podcast extends Media {
     // Getter & Setters
     // -----------------------------------------------------------------------------------------------------------------
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public ContentContributor getPodcastCreator() {
         return podcastCreator;
     }
@@ -46,9 +69,8 @@ public class Podcast extends Media {
     @Override
     public String toString() {
         return "Podcast{" +
-                "podcastCreator=" + podcastCreator +
+                "id=" + id +
+                ", podcastCreator=" + podcastCreator +
                 '}';
     }
-
-
 }
