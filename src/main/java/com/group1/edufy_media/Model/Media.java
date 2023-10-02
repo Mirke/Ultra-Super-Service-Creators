@@ -3,8 +3,7 @@ package com.group1.edufy_media.Model;
 
 import jakarta.persistence.*;
 
-@Entity
-@Inheritance
+@MappedSuperclass
 public abstract class Media {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

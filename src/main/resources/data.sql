@@ -1,0 +1,1 @@
+INSERT INTO song (media_name, release_date, genre_id, artist_id, media_type_id, album_id) VALUES ('Eye Of The Tiger', '1982', null, null, null, 1);
