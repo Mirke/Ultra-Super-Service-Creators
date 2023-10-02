@@ -23,12 +23,8 @@ public class Song extends Media implements Serializable {
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     // Transient - This is excluded until we have a database and set relations.
-    @Transient
+    @ManyToOne(targetEntity = Artist.class)
     @JoinColumn(name = "artist_id")
     private ContentContributor artist;
 
@@ -45,13 +41,8 @@ public class Song extends Media implements Serializable {
     public Song() {
     }
 
-    public Song(ContentContributor artist, Album album) {
-        this.artist = artist;
-        this.album = album;
-    }
-
-    public Song(String name, Genre genre, MediaType mediaType, String releaseDate, ContentContributor artist, Album album) {
-        super(name, genre, mediaType, releaseDate);
+    public Song(int id, String name, Genre genre, MediaType mediaType, String releaseDate, ContentContributor artist, Album album) {
+        super(id, name, genre, mediaType, releaseDate);
         this.artist = artist;
         this.album = album;
     }
@@ -59,14 +50,6 @@ public class Song extends Media implements Serializable {
     // -----------------------------------------------------------------------------------------------------------------
     // Getter & Setters
     // -----------------------------------------------------------------------------------------------------------------
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public ContentContributor getArtist() {
         return artist;
@@ -89,11 +72,11 @@ public class Song extends Media implements Serializable {
     // Overwritten Methods
     // -----------------------------------------------------------------------------------------------------------------
 
+
     @Override
     public String toString() {
         return "Song{" +
-                "id=" + id +
-                ", artist=" + artist +
+                "artist=" + artist +
                 ", album=" + album +
                 '}';
     }

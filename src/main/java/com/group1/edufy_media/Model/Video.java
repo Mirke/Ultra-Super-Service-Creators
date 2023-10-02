@@ -21,14 +21,9 @@ public class Video extends Media{
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    // Transient - This is excluded until we have a database and set relations.
-    @Transient
-    @JoinColumn(name = "creator_id")
-    private ContentContributor creator;
+    @ManyToOne(targetEntity = VideoCreator.class)
+    @JoinColumn(name = "video_creator_id")
+    private ContentContributor videoCreator;
 
     // -----------------------------------------------------------------------------------------------------------------
     // Constructor
@@ -37,30 +32,23 @@ public class Video extends Media{
     public Video() {
     }
 
-    public Video(String name, Genre genre, MediaType mediaType, String releaseDate, ContentContributor contentContributor) {
-        super(name, genre, mediaType, releaseDate);
-        this.creator = contentContributor;
+    public Video(int id, String name, Genre genre, MediaType mediaType, String releaseDate, ContentContributor videoCreator) {
+        super(id, name, genre, mediaType, releaseDate);
+        this.videoCreator = videoCreator;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     // Getter & Setters
     // -----------------------------------------------------------------------------------------------------------------
 
-    public int getId() {
-        return id;
+    public ContentContributor getVideoCreator() {
+        return videoCreator;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setVideoCreator(ContentContributor videoCreator) {
+        this.videoCreator = videoCreator;
     }
 
-    public ContentContributor getCreator() {
-        return creator;
-    }
-
-    public void setCreator(ContentContributor creator) {
-        this.creator = creator;
-    }
 
     // -----------------------------------------------------------------------------------------------------------------
     // Overwritten Methods
@@ -69,8 +57,7 @@ public class Video extends Media{
     @Override
     public String toString() {
         return "Video{" +
-                "id=" + id +
-                ", creator=" + creator +
+                "videoCreator=" + videoCreator +
                 '}';
     }
 }

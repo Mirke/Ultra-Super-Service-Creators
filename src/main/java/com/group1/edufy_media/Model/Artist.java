@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class Artist implements ContentContributor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "artist_id")
     private int id;
-    @Column(name = "creator_name")
+    @Column(name = "artist_name")
     private String name;
 }

@@ -1,13 +1,28 @@
 package com.group1.edufy_media.Model;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance
 public abstract class Media {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private int id;
+
     //properties
-    /**
-     * Needs id property as well?
-     */
+    @Column(name = "media_name")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
     private Genre genre;
+
+    @ManyToOne
+    @JoinColumn(name = "media_type_id")
     private MediaType mediaType;
+    @Column(name = "release_date")
     private String releaseDate;
 
 
@@ -15,7 +30,8 @@ public abstract class Media {
     public Media() {
     }
 
-    public Media(String name, Genre genre, MediaType mediaType, String releaseDate) {
+    public Media(int id, String name, Genre genre, MediaType mediaType, String releaseDate) {
+        this.id = id;
         this.name = name;
         this.genre = genre;
         this.mediaType = mediaType;
@@ -23,6 +39,15 @@ public abstract class Media {
     }
 
     //getters & setters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

@@ -20,14 +20,9 @@ public class Podcast extends Media {
     // -----------------------------------------------------------------------------------------------------------------
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     // Transient - This is excluded until we have a database and set relations.
-    @Transient
-    @JoinColumn(name = "podcastCreator_id")
+    @ManyToOne(targetEntity = PodcastCreator.class)
+    @JoinColumn(name = "podcast_creator_id")
     private ContentContributor podcastCreator;
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -37,23 +32,14 @@ public class Podcast extends Media {
     public Podcast() {
     }
 
-    public Podcast(String name, Genre genre, MediaType mediaType, String releaseDate, ContentContributor podcastCreator) {
-        super(name, genre, mediaType, releaseDate);
+    public Podcast(int id, String name, Genre genre, MediaType mediaType, String releaseDate, ContentContributor podcastCreator) {
+        super(id, name, genre, mediaType, releaseDate);
         this.podcastCreator = podcastCreator;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     // Getter & Setters
     // -----------------------------------------------------------------------------------------------------------------
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public ContentContributor getPodcastCreator() {
         return podcastCreator;
     }
@@ -69,8 +55,7 @@ public class Podcast extends Media {
     @Override
     public String toString() {
         return "Podcast{" +
-                "id=" + id +
-                ", podcastCreator=" + podcastCreator +
+                "podcastCreator=" + podcastCreator +
                 '}';
     }
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "podcast_creator")
 public class PodcastCreator implements ContentContributor {
     @Id
+    @Column(name = "podcast_creator_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "podcast_creator_name")

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class VideoCreator implements ContentContributor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "video_creator_id")
     private int id;
     @Column(name = "video_creator_name")
     private String name;
