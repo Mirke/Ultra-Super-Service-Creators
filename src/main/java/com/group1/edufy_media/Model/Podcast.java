@@ -20,7 +20,7 @@ public class Podcast extends Media {
     // -----------------------------------------------------------------------------------------------------------------
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
-    // Transient - This is excluded until we have a database and set relations.
+
     @ManyToOne(targetEntity = PodcastCreator.class)
     @JoinColumn(name = "podcast_creator_id")
     private ContentContributor podcastCreator;
