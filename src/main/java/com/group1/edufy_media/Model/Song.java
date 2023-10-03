@@ -23,12 +23,10 @@ public class Song extends Media implements Serializable {
     // Properties
     // -----------------------------------------------------------------------------------------------------------------
 
-    // Transient - This is excluded until we have a database and set relations.
     @ManyToOne(targetEntity = Artist.class)
     @JoinColumn(name = "artist_id")
     private ContentContributor artist;
 
-    // Relation needs to be inspected in the future.
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;
