@@ -1,8 +1,7 @@
 package com.group1.edufy_media.Controllers;
 
-import com.group1.edufy_media.Model.Album;
-import com.group1.edufy_media.Model.ContentContributor;
-import com.group1.edufy_media.Model.Media;
+import com.group1.edufy_media.Model.*;
+import com.group1.edufy_media.Services.MediaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +14,13 @@ public class CustomerController {
 
     - All the different services that we need.
         -userService
-        -mediaService
+        -mediaService (implemented)
         -albumService
     - Possibly a logger.
 
      */
+
+    private MediaService mediaService;
 
 
     // Constructors:
@@ -32,10 +33,24 @@ public class CustomerController {
     @GetMapping("/mediabyspecificcontentcontributer/{id}")
         public List<Media> allMediaByASpecificContentContributer (@PathVariable("id") int contentContributorId) {
 
-        return mediaService.getMediaByCreator(contentContributorId);
+        return mediaService.getMediaByContentContributer(contentContributorId);
 
     }
 
+
+    // THE FOLLOWING ENDPOINT IS FOR TESTING
+    @GetMapping("/podcastsbyspecificcontentcontributer/{id}")
+    public List<Podcast> allPodcastsByASpecificContentContributer (@PathVariable("id") int contentContributorId) {
+
+        // return mediaService.getPodcastsByContentContributer(contentContributorId);
+        return mediaService.getPodcastsByContentContributer(contentContributorId);
+
+    }
+
+
+
+
+    /*
     @GetMapping("/topmediaforuser/{id}")
     public List<Media> topthreemediaforauser (@PathVariable("id") int userId) {
 
@@ -90,5 +105,7 @@ public class CustomerController {
         userService.addMediagenreToDisliked(userId, mediaId);
 
     }
+
+     */
 
 }
