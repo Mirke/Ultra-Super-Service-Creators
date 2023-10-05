@@ -1,10 +1,9 @@
 package com.group1.edufy_media.Controllers;
 
-import com.group1.edufy_media.Model.Album;
-import com.group1.edufy_media.Model.ContentContributor;
-import com.group1.edufy_media.Model.Genre;
-import com.group1.edufy_media.Model.Media;
+import com.group1.edufy_media.Model.*;
 import com.group1.edufy_media.Services.GenreService;
+import com.group1.edufy_media.Services.PodcastCreatorService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +25,9 @@ public class CustomerController {
 
     @Autowired
     private GenreService genreService;
+
+    @Autowired
+    private PodcastCreatorService podcastCreatorService;
 
     // Constructors:
     public CustomerController() {
@@ -99,6 +101,10 @@ public class CustomerController {
     @GetMapping("/getAllGenres/")
     public List<Genre> getAllGenres(){
         return genreService.getAllGenres();
+    }
+    @GetMapping("/getAllPodcastCreators/")
+    public List<PodcastCreator> getAllPodcastCreators(){
+        return podcastCreatorService.getAllPodcastCreators();
     }
 
 }
