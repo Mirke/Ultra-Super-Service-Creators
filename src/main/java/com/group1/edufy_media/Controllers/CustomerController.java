@@ -2,6 +2,7 @@ package com.group1.edufy_media.Controllers;
 
 import com.group1.edufy_media.Model.*;
 import com.group1.edufy_media.Services.GenreService;
+import com.group1.edufy_media.Services.ArtistService;
 import com.group1.edufy_media.Services.PodcastCreatorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class CustomerController {
 
     @Autowired
     private PodcastCreatorService podcastCreatorService;
+
+    @Autowired
+    private ArtistService artistService;
 
     // Constructors:
     public CustomerController() {
@@ -105,6 +109,10 @@ public class CustomerController {
     @GetMapping("/getAllPodcastCreators/")
     public List<PodcastCreator> getAllPodcastCreators(){
         return podcastCreatorService.getAllPodcastCreators();
+    }
+    @GetMapping("/getAllArtists/")
+    public List<Artist> getAllArtists(){
+        return artistService.getAllArtists();
     }
 
 }
