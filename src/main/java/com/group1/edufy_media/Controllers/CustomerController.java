@@ -1,34 +1,40 @@
 package com.group1.edufy_media.Controllers;
 
 import com.group1.edufy_media.Model.Album;
-import com.group1.edufy_media.Model.ContentContributor;
-import com.group1.edufy_media.Model.Media;
+import com.group1.edufy_media.Services.AlbumService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/edufy")
 public class CustomerController {
 
-    /* PROPERTIES:
-
-    - All the different services that we need.
-        -userService
-        -mediaService
-        -albumService
-    - Possibly a logger.
-
-     */
-
+    @Autowired
+    private AlbumService albumService;
 
     // Constructors:
     public CustomerController() {
 
     }
+    public CustomerController(AlbumService albumService) {
+        this.albumService = albumService;
+    }
 
     // Methods:
+    @GetMapping("/allalbums")
+    public List<Album> getAllAlbums() {
+        return albumService.getAllAlbums();
+    }
 
+    @GetMapping("/albumsbyartist/{creator_id}")
+    Optional<Album> getAlbumsByArtist(@PathVariable("creator_id") int creatorId) {
+        return albumService.getAlbumsByCreatorId(creatorId);
+    }
+
+    /*
     @GetMapping("/mediabyspecificcontentcontributer/{id}")
         public List<Media> allMediaByASpecificContentContributer (@PathVariable("id") int contentContributorId) {
 
@@ -89,6 +95,6 @@ public class CustomerController {
 
         userService.addMediagenreToDisliked(userId, mediaId);
 
-    }
+    }*/
 
 }
