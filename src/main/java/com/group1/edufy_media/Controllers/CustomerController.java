@@ -2,12 +2,9 @@ package com.group1.edufy_media.Controllers;
 
 
 import com.group1.edufy_media.Model.Album;
-import com.group1.edufy_media.Services.AlbumService;
+import com.group1.edufy_media.Services.*;
 
 import com.group1.edufy_media.Model.*;
-import com.group1.edufy_media.Services.GenreService;
-import com.group1.edufy_media.Services.ArtistService;
-import com.group1.edufy_media.Services.PodcastCreatorService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +40,9 @@ public class CustomerController {
     @Autowired
     private ArtistService artistService;
 
+    @Autowired
+    private MediaService mediaService;
+
 
     // Constructors:
     public CustomerController() {
@@ -64,6 +64,26 @@ public class CustomerController {
         return albumService.getAlbumsByArtist(creatorId);
     }
 
+    @GetMapping("/getAllArtists/")
+    public List<Artist> getAllArtists(){
+        return artistService.getAllArtists();
+    }
+
+    @GetMapping("/getAllGenres/")
+    public List<Genre> getAllGenres(){
+        return genreService.getAllGenres();
+
+    }
+
+    @GetMapping("/getAllPodcastCreators/")
+    public List<PodcastCreator> getAllPodcastCreators(){
+        return podcastCreatorService.getAllPodcastCreators();
+    }
+
+    @GetMapping("/getAllMediaOnServer/")
+    public List<Media> getAllMediaOnServer(){
+        return mediaService.findAllMedia();
+    }
     /*
     @GetMapping("/mediabyspecificcontentcontributer/{id}")
         public List<Media> allMediaByASpecificContentContributer (@PathVariable("id") int contentContributorId) {
@@ -134,15 +154,7 @@ public class CustomerController {
 //
 //    }
 
-    @GetMapping("/getAllGenres/")
-    public List<Genre> getAllGenres(){
-        return genreService.getAllGenres();
 
-    }
-    @GetMapping("/getAllPodcastCreators/")
-    public List<PodcastCreator> getAllPodcastCreators(){
-        return podcastCreatorService.getAllPodcastCreators();
-    }
 
 
     @GetMapping("recommendedmediaforuser/{id}")
@@ -192,11 +204,6 @@ public class CustomerController {
         userService.addMediagenreToDisliked(userId, mediaId);
 
     }*/
-
-    @GetMapping("/getAllArtists/")
-    public List<Artist> getAllArtists(){
-        return artistService.getAllArtists();
-    }
 
 
 }
