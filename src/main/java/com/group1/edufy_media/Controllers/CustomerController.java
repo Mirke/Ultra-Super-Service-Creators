@@ -30,8 +30,8 @@ public class CustomerController {
     }
 
     @GetMapping("/albumsbyartist/{creator_id}")
-    Optional<Album> getAlbumsByArtist(@PathVariable("creator_id") int creatorId) {
-        return albumService.getAlbumsByCreatorId(creatorId);
+    List<Album> getAlbumsByArtist(@PathVariable("creator_id") int creatorId) {
+        return albumService.getAlbumsByArtist(creatorId);
     }
 
     /*

@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface AlbumServiceInterface {
     List<Album> getAllAlbums();
-    Optional<Album> getAlbumsByCreatorId(int creatorId);
+    List<Album> getAlbumsByArtist(int creatorId);
 }

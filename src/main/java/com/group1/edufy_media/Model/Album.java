@@ -1,6 +1,11 @@
 package com.group1.edufy_media.Model;
 
 import jakarta.persistence.*;
+/**
+ * Author: Lada Egolaeva
+ * Description: The Album entity class contains the annotated properties, constructors and methods needed
+ * to create an Album object and table in database.
+ * */
 
 @Entity
 @Table(name = "album")

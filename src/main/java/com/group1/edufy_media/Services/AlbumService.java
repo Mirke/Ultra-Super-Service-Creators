@@ -20,7 +20,9 @@ public class AlbumService implements AlbumServiceInterface {
     }
 
     @Override
-    public Optional<Album> getAlbumsByCreatorId(int creatorId) {
-        return albumRepository.findById(creatorId);
+    public List<Album> getAlbumsByArtist(int creatorId) {
+        return albumRepository.findAlbumsByArtistId(creatorId);
     }
+
+
 }
