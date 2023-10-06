@@ -42,10 +42,10 @@ INSERT INTO podcast (media_name, release_date, genre_id, media_type_id, podcast_
 
 INSERT INTO song (media_name, release_date, genre_id, media_type_id, album_id, artist_id) VALUES
                 ('Sunday Morning Coming Down', '1968-03-01', 1, 1, 1, 1),
-                ('Amish Paradise', '1992-03-01', 2, 1, 2, 2),
-                ('Mr. Pharmacist', '1964-03-01', 3, 1, 3, 3),
-                ('Put The Clock Back On The Wall', '1966-03-01', 4, 1, 3, 4),
-                ('Who Killed Marilyn?', '1978-03-01', 5, 1, 3, 5);
+                ('Amish Paradise', '1992-03-01', 2, 1, 4, 2),
+                ('Mr. Pharmacist', '1964-03-01', 3, 1, 5, 3),
+                ('Put The Clock Back On The Wall', '1966-03-01', 4, 1, 5, 3),
+                ('Who Killed Marilyn?', '1978-03-01', 5, 1, 5, 3);
 
 INSERT INTO video_creator (video_creator_name) VALUES
                 ('Andreas Jonsson'),

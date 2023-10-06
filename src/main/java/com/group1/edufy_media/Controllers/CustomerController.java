@@ -16,20 +16,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/edufy")
 public class CustomerController {
-
-
+    //properties
     @Autowired
     private AlbumService albumService;
-
-    /* PROPERTIES:
-
-    - All the different services that we need.
-        -userService
-        -mediaService
-        -albumService
-    - Possibly a logger.
-
-     */
 
     @Autowired
     private GenreService genreService;
@@ -53,7 +42,6 @@ public class CustomerController {
     }
 
     // Methods:
-
     @GetMapping("/allalbums")
     public List<Album> getAllAlbums() {
         return albumService.getAllAlbums();
@@ -62,6 +50,11 @@ public class CustomerController {
     @GetMapping("/albumsbyartist/{creator_id}")
     List<Album> getAlbumsByArtist(@PathVariable("creator_id") int creatorId) {
         return albumService.getAlbumsByArtist(creatorId);
+    }
+
+    @GetMapping("/getsongsinalbum/{album_id}")
+    List<Song> displaySongsInAlbum(@PathVariable("album_id") int album_id) {
+        return mediaService.displaySongsInAlbum(album_id);
     }
 
     @GetMapping("/getAllArtists/")

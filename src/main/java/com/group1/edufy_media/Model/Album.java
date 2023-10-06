@@ -1,6 +1,10 @@
 package com.group1.edufy_media.Model;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Author: Lada Egolaeva
  * Description: The Album entity class contains the annotated properties, constructors and methods needed
@@ -19,13 +23,6 @@ public class Album {
     @JoinColumn(name = "creator_id")
     private Artist artist;
 
-    public Artist getArtist() {
-        return artist;
-    }
-
-    public void setArtist(Artist artist) {
-        this.artist = artist;
-    }
 
     //constructor
     public Album() {
@@ -50,5 +47,13 @@ public class Album {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 }

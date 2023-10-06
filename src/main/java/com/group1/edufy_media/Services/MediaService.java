@@ -20,10 +20,8 @@ public class MediaService implements MediaServiceInterface{
 
     @Autowired
     private VideoRepository videoRepository;
-
     @Autowired
     private SongRepository songRepository;
-
     @Autowired
     private PodcastRepository podcastRepository;
 
@@ -38,5 +36,9 @@ public class MediaService implements MediaServiceInterface{
         mediaList.addAll(songs);
         System.out.println(mediaList);
         return mediaList;
+    }
+
+    public List<Song> displaySongsInAlbum(int album_id) {
+        return songRepository.findSongsByAlbum_Id(album_id);
     }
 }
