@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/api/edufy")
@@ -77,6 +77,16 @@ public class CustomerController {
     public List<Media> getAllMediaOnServer(){
         return mediaService.findAllMedia();
     }
+
+    @GetMapping("/sortMediaByGenreId/")
+    public Stream<Media> sortMediaByGenreId(){return mediaService.sortAllMediaByGenre();}
+
+    @GetMapping("/sortMediaByMediaType/")
+    public Stream<Media> getAllVideo(){return mediaService.sortAllMediaByMediaType();}
+
+//    @GetMapping("/findAllMediaByQuery/")
+//    public List<Optional> getAllMediaEntitiesByQuery(){return mediaService.getAllMediaEntitiesByQuery();}
+
     /*
     @GetMapping("/mediabyspecificcontentcontributer/{id}")
         public List<Media> allMediaByASpecificContentContributer (@PathVariable("id") int contentContributorId) {

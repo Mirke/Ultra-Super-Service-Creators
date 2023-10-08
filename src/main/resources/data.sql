@@ -19,7 +19,8 @@ INSERT INTO genre (genre_name) VALUES
                 ('Art-rock'),
                 ('Psych'),
                 ('Gaaangsta'),
-                ('60´s Garage');
+                ('60´s Garage'),
+                ('Horror');
 
 INSERT INTO podcast_creator (podcast_creator_name) VALUES
                 ('Mikael Peterson'),
@@ -42,6 +43,7 @@ INSERT INTO podcast (media_name, release_date, genre_id, media_type_id, podcast_
 
 INSERT INTO song (media_name, release_date, genre_id, media_type_id, album_id, artist_id) VALUES
                 ('Sunday Morning Coming Down', '1968-03-01', 1, 1, 1, 1),
+                ('Marilyn will die but...', '1968-03-01', 6, 1, 4, 4),
                 ('Amish Paradise', '1992-03-01', 2, 1, 4, 2),
                 ('Mr. Pharmacist', '1964-03-01', 3, 1, 5, 3),
                 ('Put The Clock Back On The Wall', '1966-03-01', 4, 1, 5, 3),
