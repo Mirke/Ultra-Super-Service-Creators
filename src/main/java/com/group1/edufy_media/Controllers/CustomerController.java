@@ -32,11 +32,15 @@ public class CustomerController {
     @Autowired
     private MediaService mediaService;
 
+    @Autowired
+    private PodcastService podcastService;
+
 
     // Constructors:
     public CustomerController() {
 
     }
+
     public CustomerController(AlbumService albumService) {
         this.albumService = albumService;
     }
@@ -58,25 +62,37 @@ public class CustomerController {
     }
 
     @GetMapping("/getAllArtists/")
-    public List<Artist> getAllArtists(){
+    public List<Artist> getAllArtists() {
         return artistService.getAllArtists();
     }
 
     @GetMapping("/getAllGenres/")
-    public List<Genre> getAllGenres(){
+    public List<Genre> getAllGenres() {
         return genreService.getAllGenres();
 
     }
 
     @GetMapping("/getAllPodcastCreators/")
-    public List<PodcastCreator> getAllPodcastCreators(){
+    public List<PodcastCreator> getAllPodcastCreators() {
         return podcastCreatorService.getAllPodcastCreators();
     }
 
     @GetMapping("/getAllMediaOnServer/")
-    public List<Media> getAllMediaOnServer(){
+    public List<Media> getAllMediaOnServer() {
         return mediaService.findAllMedia();
     }
+
+
+    @GetMapping("/getAllPodcasts/")
+    public List<Podcast> getAllPodcasts() {
+        return podcastService.getAllPodcasts();
+    }
+
+
+
+
+
+
     /*
     @GetMapping("/mediabyspecificcontentcontributer/{id}")
         public List<Media> allMediaByASpecificContentContributer (@PathVariable("id") int contentContributorId) {
@@ -197,6 +213,5 @@ public class CustomerController {
         userService.addMediagenreToDisliked(userId, mediaId);
 
     }*/
-
 
 }
