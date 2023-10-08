@@ -81,8 +81,19 @@ public class CustomerController {
     @GetMapping("/sortMediaByGenreId/")
     public Stream<Media> sortMediaByGenreId(){return mediaService.sortAllMediaByGenre();}
 
-    @GetMapping("/sortMediaByMediaType/")
+    @GetMapping("/sortMediaByMediaTypeId/")
     public Stream<Media> getAllVideo(){return mediaService.sortAllMediaByMediaType();}
+
+    @GetMapping("/getMediaTypeById/{media_type_id}")
+    public Stream<Media> getMediaTypeById(@PathVariable("media_type_id") int media_type_id){
+        return mediaService.getMediaTypeById(media_type_id);
+    }
+
+    @GetMapping("/getGenreById/{genre_id}")
+    public Stream<Media> getGenreById(@PathVariable("genre_id") int genre_id){
+        return mediaService.getGenreById(genre_id);
+    }
+
 
 //    @GetMapping("/findAllMediaByQuery/")
 //    public List<Optional> getAllMediaEntitiesByQuery(){return mediaService.getAllMediaEntitiesByQuery();}
