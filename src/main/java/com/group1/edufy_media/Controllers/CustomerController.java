@@ -2,6 +2,7 @@ package com.group1.edufy_media.Controllers;
 
 
 import com.group1.edufy_media.Model.Album;
+import com.group1.edufy_media.Repositories.PlayedSongRepository;
 import com.group1.edufy_media.Services.*;
 
 import com.group1.edufy_media.Model.*;
@@ -31,6 +32,12 @@ public class CustomerController {
 
     @Autowired
     private MediaService mediaService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PlayedSongService playedSongService;
 
 
     // Constructors:
@@ -93,6 +100,35 @@ public class CustomerController {
     public Stream<Media> getGenreById(@PathVariable("genre_id") int genre_id){
         return mediaService.getGenreById(genre_id);
     }
+
+    @GetMapping("/getAllUsers")
+    public List<User> getAllUsers(){
+        return userService.findAll();
+    }
+
+
+    // Endpoint in development:
+
+    @GetMapping("/getUsersGenrePreferences")
+    public Stream<GenrePreference> getUsersGenrePreferences(@RequestBody User user){
+        return userService.getUserGenrePreferences(user);
+    }
+
+    @GetMapping("/getUsersPlayedSongs")
+    public Stream<PlayedSong> getUsersPlayedSongs(@RequestBody User user){
+
+        return userService.findPlayedSongsByUser(user);
+
+    }
+
+    @GetMapping("/getAllPlayedSongs")
+    public List<PlayedSong> getAllPlayedSongs(){
+
+        return playedSongService.findAll();
+
+    }
+
+
 
 
 //    @GetMapping("/findAllMediaByQuery/")
