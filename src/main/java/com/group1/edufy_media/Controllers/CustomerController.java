@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @RestController
@@ -112,6 +113,10 @@ public class CustomerController {
         thumbRatingService.giveThumbsDown(song_id);
     }
 
+    @GetMapping("/getMostPopularSong/")
+    public Optional<Song> getMostPopularSong(){
+        return thumbRatingService.mostLikedSong();
+    }
 
 
 //    @GetMapping("/findAllMediaByQuery/")
