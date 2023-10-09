@@ -24,6 +24,10 @@ public abstract class Media {
     @Column(name = "release_date")
     private String releaseDate;
 
+    @OneToOne
+    @JoinColumn(name = "thumbs_rating_id")
+    ThumbRating thumbRating;
+
 
     //constructors
     public Media() {
@@ -36,6 +40,18 @@ public abstract class Media {
         this.mediaType = mediaType;
         this.releaseDate = releaseDate;
     }
+
+    //micke
+
+    public Media(int id, String name, Genre genre, MediaType mediaType, String releaseDate, ThumbRating thumbRating) {
+        this.id = id;
+        this.name = name;
+        this.genre = genre;
+        this.mediaType = mediaType;
+        this.releaseDate = releaseDate;
+        this.thumbRating = thumbRating;
+    }
+
 
     //getters & setters
 
@@ -76,15 +92,28 @@ public abstract class Media {
         this.releaseDate = releaseDate;
     }
 
+    //micke
+
+    public ThumbRating getThumbRating() {
+        return thumbRating;
+    }
+
+    public void setThumbRating(ThumbRating thumbRating) {
+        this.thumbRating = thumbRating;
+    }
+
+
     //toString
 
     @Override
     public String toString() {
         return "Media{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", genre=" + genre +
                 ", mediaType=" + mediaType +
                 ", releaseDate='" + releaseDate + '\'' +
+                ", thumbRating=" + thumbRating +
                 '}';
     }
 }

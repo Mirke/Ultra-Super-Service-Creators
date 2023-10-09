@@ -26,10 +26,10 @@ public class ThumbRating {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @JoinColumn(name = "thumbs_up")
+    @Column(name = "thumbs_up")
     private int thumbUp;
 
-    @JoinColumn(name = "thumbs_down")
+    @Column(name = "thumbs_down")
     private int thumbDown;
 
 
@@ -39,6 +39,11 @@ public class ThumbRating {
 
 
     public ThumbRating() {
+    }
+
+    public ThumbRating( int thumbUp, int thumbDown) {
+        this.thumbUp = thumbUp;
+        this.thumbDown = thumbDown;
     }
 
     public ThumbRating(int id, int thumbUp, int thumbDown) {

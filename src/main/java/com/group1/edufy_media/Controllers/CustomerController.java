@@ -32,6 +32,9 @@ public class CustomerController {
     @Autowired
     private MediaService mediaService;
 
+    @Autowired
+    private ThumbRatingService thumbRatingService;
+
 
     // Constructors:
     public CustomerController() {
@@ -93,6 +96,22 @@ public class CustomerController {
     public Stream<Media> getGenreById(@PathVariable("genre_id") int genre_id){
         return mediaService.getGenreById(genre_id);
     }
+
+    @PutMapping("/addThumb/")
+    public void getMedia(@RequestBody Song song){
+        thumbRatingService.addThumbRatingToMediaItem(song);
+    }
+
+    @GetMapping("/giveThumbsUp/{song_id}")
+    public void giveThumbsUp(@PathVariable("song_id") int song_id){
+        thumbRatingService.giveThumbsUp(song_id);
+    }
+
+    @GetMapping("/giveThumbsDown/{song_id}")
+    public void giveThumbsDown(@PathVariable("song_id") int song_id){
+        thumbRatingService.giveThumbsDown(song_id);
+    }
+
 
 
 //    @GetMapping("/findAllMediaByQuery/")

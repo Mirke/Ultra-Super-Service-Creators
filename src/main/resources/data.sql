@@ -5,6 +5,11 @@ INSERT INTO artist (artist_name) VALUES
                                      ('NWA'),
                                      ('Darkthrone');
 
+INSERT INTO thumb_rating(thumbs_up,thumbs_down) VALUES
+                                                    (0,0),
+                                                    (5,5),
+                                                    (-5,-5);
+
 INSERT INTO album (album_name, creator_id) VALUES
                 ('Yoyoyoyo', 1),
                 ('Yoyoyoyo - the sequel', 1),
@@ -48,6 +53,8 @@ INSERT INTO song (media_name, release_date, genre_id, media_type_id, album_id, a
                 ('Mr. Pharmacist', '1964-03-01', 3, 1, 5, 3),
                 ('Put The Clock Back On The Wall', '1966-03-01', 4, 1, 5, 3),
                 ('Who Killed Marilyn?', '1978-03-01', 5, 1, 5, 3);
+
+-- UPDATE song set thumb_rating = (1,1) where id = 1;
 
 INSERT INTO video_creator (video_creator_name) VALUES
                 ('Andreas Jonsson'),
