@@ -94,11 +94,11 @@ public class ThumbRating {
     }
 
     public void subtractOneThumbsUp(){
-        this.thumbUp = this.thumbUp + 1;
+        this.thumbUp = this.thumbUp - 1;
     }
 
     public void subtractOneThumbsDown(){
-        this.thumbDown = this.thumbDown + 1;
+        this.thumbDown = this.thumbDown - 1;
     }
 
     public double getDifferenceBetweenThumbsUpAndDown(){
