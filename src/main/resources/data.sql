@@ -69,3 +69,38 @@ INSERT INTO video (media_name, release_date, genre_id, media_type_id, video_crea
                 ('Der Model', '1980-03-02', 3, 3, 3),
                 ('Das Boot', '1989-03-02', 4, 3, 4),
                 ('Ich habe Frühstuck gegessen', '1918-03-02', 5, 3, 5);
+
+INSERT INTO songUser (user_name) VALUES
+                ('Affelei'),
+                ('Lada'),
+                ('Moussa'),
+                ('Mikael'),
+                ('Andreas');
+
+INSERT INTO genre_preference (user_id, genre_id, timesliked) VALUES
+                 (1, 1, 5),
+                 (1, 2, 10),
+                 (2, 3, 20);
+
+INSERT INTO played_song (user_id, media_id, userHasPlayedSong) VALUES
+                 (1, 1, true),
+                 (1, 2, true),
+                 (2, 3, true);
+
+INSERT INTO users (username, password, enabled)
+VALUES
+    ('André YES!', '{noop}asd', true),
+    ('Moses Quake', '{noop}asd', true),
+    ('Ass Saver In Azure', '{noop}asd', true),
+    ('Bruce Wayne´s Assistant', '{noop}asd', true),
+    ('The one who dies without information', '{noop}asd', true)
+;
+
+INSERT INTO authorities (username, authority)
+VALUES
+    ('André YES!', 'ROLE_USER'),
+    ('Moses Quake', 'ROLE_ADMIN'),
+    ('Ass Saver In Azure', 'ROLE_USER'),
+    ('Bruce Wayne´s Assistant', 'ROLE_ADMIN'),
+    ('The one who dies without information', 'ROLE_USER')
+;

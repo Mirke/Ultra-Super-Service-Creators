@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 @Service
-public class MediaService implements MediaServiceInterface{
+public class MediaService implements MediaServiceInterface {
 
     @Autowired
     private VideoRepository videoRepository;
@@ -37,6 +37,24 @@ public class MediaService implements MediaServiceInterface{
         return mediaList;
     }
 
+    /*
+    @Override
+    public Stream<Media> findMediaPlayedByUser() {
+        List<Media> playedMediaList = new ArrayList<>();
+
+        List<Podcast> podcasts = podcastRepository.findAll();
+        List<Video> videos = videoRepository.findAll();
+        List<Song> songs = songRepository.findAll();
+
+        playedMediaList.addAll(podcasts);
+        playedMediaList.addAll(videos);
+        playedMediaList.addAll(songs);
+
+        return playedMediaList;
+    }
+
+     */
+
     public List<Song> displaySongsInAlbum(int album_id) {
         return songRepository.findSongsByAlbum_Id(album_id);
     }
@@ -53,12 +71,17 @@ public class MediaService implements MediaServiceInterface{
         return mediaList.stream().sorted(this::podcastComparatorById);
     }
 
-    public Stream<Media> getMediaTypeById(int media_type_id){
+    @Override
+    public Stream<Media> findMediaPlayedByUser() {
+        return null;
+    }
+
+    public Stream<Media> getMediaTypeById(int media_type_id) {
         List<Media> mediaList = findAllMedia();
         return mediaList.stream().filter(mt -> mt.getMediaType().getId() == media_type_id);
     }
 
-    public Stream<Media> getGenreById(int genre_id){
+    public Stream<Media> getGenreById(int genre_id) {
         List<Media> mediaList = findAllMedia();
         return mediaList.stream().filter(mt -> mt.getGenre().getId() == genre_id);
     }
@@ -77,11 +100,11 @@ public class MediaService implements MediaServiceInterface{
 //        return podcastRepository.findById(podcast_id);
 //    }
 
-    private int genreComparatorById(Media o1, Media o2){
+    private int genreComparatorById(Media o1, Media o2) {
         return Integer.compare(o1.getGenre().getId(), o2.getGenre().getId());
     }
 
-    private int podcastComparatorById(Media o1, Media o2){
+    private int podcastComparatorById(Media o1, Media o2) {
         return Integer.compare(o1.getMediaType().getId(), o2.getMediaType().getId());
     }
 
