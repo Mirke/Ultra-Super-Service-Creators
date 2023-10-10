@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface SongRepository extends JpaRepository<Song,Integer> {
     List<Song> findSongsByAlbum_Id(int albumId);
+    Song findById(int songId);
 }

@@ -106,27 +106,50 @@ public class CustomerController {
         return userService.findAll();
     }
 
-
-    // Endpoint in development:
-
-    @GetMapping("/getUsersGenrePreferences")
-    public Stream<GenrePreference> getUsersGenrePreferences(@RequestBody User user){
-        return userService.getUserGenrePreferences(user);
-    }
-
-    @GetMapping("/getUsersPlayedSongs")
-    public Stream<PlayedSong> getUsersPlayedSongs(@RequestBody User user){
-
-        return userService.findPlayedSongsByUser(user);
-
-    }
-
     @GetMapping("/getAllPlayedSongs")
     public List<PlayedSong> getAllPlayedSongs(){
 
         return playedSongService.findAll();
 
     }
+
+    @GetMapping("/getUsersPlayedSongs")
+    public List<PlayedSong> getUsersPlayedSongs(@RequestBody User user){
+
+        return userService.findPlayedSongsByUser(user);
+
+    }
+
+    @GetMapping("/UserPlaySong/{song-id}/{user-id}")
+    public void playSong(@PathVariable("song-id") int songId, @PathVariable("user-id") int userId){
+
+        userService.userPlaySong(songId, userId);
+
+    }
+
+    @GetMapping("/getSongsNotPlayedByUser/{user-id}")
+    public List<Song> getSongsNotPlayedByUser(@PathVariable("user-id") int userId){
+
+        return userService.getSongsNotPlayedByUser(userId);
+
+    }
+
+
+    // Endpoint in development:
+
+    @GetMapping("/getUsersGenrePreferences")
+    public Stream<GenrePreference> getUsersGenrePreferences(@RequestBody User user){
+
+        return userService.getUserGenrePreferences(user);
+
+    }
+
+
+
+
+
+
+
 
 
 
