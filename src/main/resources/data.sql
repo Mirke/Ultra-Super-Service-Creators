@@ -79,3 +79,21 @@ INSERT INTO played_song (user_id, media_id, userHasPlayedSong) VALUES
                  (1, 1, true),
                  (1, 2, true),
                  (2, 3, true);
+
+INSERT INTO users (username, password, enabled)
+VALUES
+    ('André YES!', '{noop}asd', true),
+    ('Moses Quake', '{noop}asd', true),
+    ('Ass Saver In Azure', '{noop}asd', true),
+    ('Bruce Wayne´s Assistant', '{noop}asd', true),
+    ('The one who dies without information', '{noop}asd', true)
+;
+
+INSERT INTO authorities (username, authority)
+VALUES
+    ('André YES!', 'ROLE_USER'),
+    ('Moses Quake', 'ROLE_ADMIN'),
+    ('Ass Saver In Azure', 'ROLE_USER'),
+    ('Bruce Wayne´s Assistant', 'ROLE_ADMIN'),
+    ('The one who dies without information', 'ROLE_USER')
+;
