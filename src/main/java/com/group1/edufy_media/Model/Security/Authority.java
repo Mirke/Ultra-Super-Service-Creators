@@ -12,7 +12,7 @@ public class Authority {
 
   @ManyToOne
   @JoinColumn(name = "username")
-  private User user;
+  private Users users;
 
   @Column(name = "authority", length = 50, nullable = false)
   private String authority;
@@ -20,9 +20,9 @@ public class Authority {
   public Authority() {
   }
 
-  public Authority(int role_ID, User user, String authority) {
+  public Authority(int role_ID, Users users, String authority) {
     this.role_ID = role_ID;
-    this.user = user;
+    this.users = users;
     this.authority = authority;
   }
 
@@ -34,12 +34,12 @@ public class Authority {
     this.role_ID = auth_ID;
   }
 
-  public User getUser() {
-    return user;
+  public Users getUser() {
+    return users;
   }
 
-  public void setUser(User username) {
-    this.user = username;
+  public void setUser(Users username) {
+    this.users = username;
   }
 
   public String getAuthority() {

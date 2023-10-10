@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @RestController
@@ -32,6 +33,9 @@ public class CustomerController {
 
     @Autowired
     private MediaService mediaService;
+
+    @Autowired
+    private ThumbRatingService thumbRatingService;
 
     @Autowired
     private UserService userService;
@@ -99,6 +103,26 @@ public class CustomerController {
     @GetMapping("/getGenreById/{genre_id}")
     public Stream<Media> getGenreById(@PathVariable("genre_id") int genre_id){
         return mediaService.getGenreById(genre_id);
+    }
+
+    @PutMapping("/addThumb/")
+    public void getMedia(@RequestBody Song song){
+        thumbRatingService.addThumbRatingToMediaItem(song);
+    }
+
+    @GetMapping("/giveThumbsUp/{song_id}")
+    public void giveThumbsUp(@PathVariable("song_id") int song_id){
+        thumbRatingService.giveThumbsUp(song_id);
+    }
+
+    @GetMapping("/giveThumbsDown/{song_id}")
+    public void giveThumbsDown(@PathVariable("song_id") int song_id){
+        thumbRatingService.giveThumbsDown(song_id);
+    }
+
+    @GetMapping("/getMostPopularSong/")
+    public Optional<Song> getMostPopularSong(){
+        return thumbRatingService.mostLikedSong();
     }
 
     @GetMapping("/getAllUsers")

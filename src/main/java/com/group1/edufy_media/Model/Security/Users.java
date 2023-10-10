@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Users {
 
   @Id
   @Column(name = "username", length = 50, nullable = false)
@@ -16,10 +16,10 @@ public class User {
   @Column(name = "enabled", nullable = false)
   private boolean active;
 
-  public User() {
+  public Users() {
   }
 
-  public User(String username, String password, boolean active) {
+  public Users(String username, String password, boolean active) {
     this.username = username;
     this.password = password;
     this.active = active;
