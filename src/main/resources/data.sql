@@ -65,11 +65,11 @@ INSERT INTO video (media_name, release_date, genre_id, media_type_id, video_crea
 
 INSERT INTO users (username, password, enabled)
 VALUES
-    ('André YES!', '{noop}123', true),
-    ('Moses Quake', '{noop}123', true),
-    ('Ass Saver In Azure', '{noop}123', true),
-    ('Bruce Wayne´s Assistant', '{noop}123', true),
-    ('The one who dies without information', '{noop}123', true)
+    ('André YES!', '{noop}asd', true),
+    ('Moses Quake', '{noop}asd', true),
+    ('Ass Saver In Azure', '{noop}asd', true),
+    ('Bruce Wayne´s Assistant', '{noop}asd', true),
+    ('The one who dies without information', '{noop}asd', true)
 ;
 
 INSERT INTO authorities (username, authority)
