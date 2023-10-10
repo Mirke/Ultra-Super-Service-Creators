@@ -12,4 +12,6 @@ public interface MediaServiceInterface
     List<Song> displaySongsInAlbum(int album_id);
     Stream<Media> sortAllMediaByGenre();
     Stream<Media> sortAllMediaByMediaType();
-}
+    Stream<Media> findMediaPlayedByUser();
+
+    }

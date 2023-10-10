@@ -2,6 +2,7 @@ package com.group1.edufy_media.Controllers;
 
 
 import com.group1.edufy_media.Model.Album;
+import com.group1.edufy_media.Repositories.PlayedSongRepository;
 import com.group1.edufy_media.Services.*;
 
 import com.group1.edufy_media.Model.*;
@@ -31,6 +32,12 @@ public class CustomerController {
 
     @Autowired
     private MediaService mediaService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PlayedSongService playedSongService;
 
 
     // Constructors:
@@ -93,6 +100,58 @@ public class CustomerController {
     public Stream<Media> getGenreById(@PathVariable("genre_id") int genre_id){
         return mediaService.getGenreById(genre_id);
     }
+
+    @GetMapping("/getAllUsers")
+    public List<User> getAllUsers(){
+        return userService.findAll();
+    }
+
+    @GetMapping("/getAllPlayedSongs")
+    public List<PlayedSong> getAllPlayedSongs(){
+
+        return playedSongService.findAll();
+
+    }
+
+    @GetMapping("/getUsersPlayedSongs")
+    public List<PlayedSong> getUsersPlayedSongs(@RequestBody User user){
+
+        return userService.findPlayedSongsByUser(user);
+
+    }
+
+    @GetMapping("/UserPlaySong/{song-id}/{user-id}")
+    public void playSong(@PathVariable("song-id") int songId, @PathVariable("user-id") int userId){
+
+        userService.userPlaySong(songId, userId);
+
+    }
+
+    @GetMapping("/getSongsNotPlayedByUser/{user-id}")
+    public List<Song> getSongsNotPlayedByUser(@PathVariable("user-id") int userId){
+
+        return userService.getSongsNotPlayedByUser(userId);
+
+    }
+
+
+    // Endpoint in development:
+
+    @GetMapping("/getUsersGenrePreferences")
+    public Stream<GenrePreference> getUsersGenrePreferences(@RequestBody User user){
+
+        return userService.getUserGenrePreferences(user);
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 //    @GetMapping("/findAllMediaByQuery/")
