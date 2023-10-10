@@ -36,7 +36,7 @@ public class ThumbRatingService {
     }
 
     public void giveThumbsUp(int id) {
-        Song song1 = songRepository.findById(id).orElse(null);
+        Song song1 = songRepository.findById(id);
         assert song1 != null;
         if (song1.getThumbRating() == null) {
             ThumbRating thumbRating = new ThumbRating(0, 0);
@@ -48,7 +48,7 @@ public class ThumbRatingService {
     }
 
     public void giveThumbsDown(int id) {
-        Song song1 = songRepository.findById(id).orElse(null);
+        Song song1 = songRepository.findById(id);
         assert song1 != null;
         if (song1.getThumbRating() == null) {
             ThumbRating thumbRating = new ThumbRating(0, 0);
