@@ -1,5 +1,6 @@
 package com.group1.edufy_media.Model;
 
+import com.group1.edufy_media.Model.Security.Users;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,8 +14,8 @@ public class PlayedSong {
     private int id;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "username")
+    private Users user;
 
     @ManyToOne
     @JoinColumn(name = "media_id")
@@ -29,15 +30,12 @@ public class PlayedSong {
     public PlayedSong() {
     }
 
-    public PlayedSong(int id, User user, Song song, boolean userHasPlayedSong) {
+    public PlayedSong(int id, Users user, Song song, boolean userHasPlayedSong) {
         this.id = id;
         this.user = user;
         this.song = song;
         this.userHasPlayedSong = userHasPlayedSong;
     }
-
-    // GETTERS AND SETTERS:
-
 
     public int getId() {
         return id;
@@ -47,11 +45,11 @@ public class PlayedSong {
         this.id = id;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

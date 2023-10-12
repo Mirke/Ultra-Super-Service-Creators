@@ -2,6 +2,7 @@ package com.group1.edufy_media.Repositories;
 
 import com.group1.edufy_media.Model.GenrePreference;
 import com.group1.edufy_media.Model.PlayedSong;
+import com.group1.edufy_media.Model.Security.Users;
 import com.group1.edufy_media.Model.Song;
 import com.group1.edufy_media.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,8 +14,8 @@ import java.util.stream.Stream;
 @Repository
 public interface PlayedSongRepository extends JpaRepository<PlayedSong, Integer> {
 
-    List<PlayedSong> findPlayedSongsByUser(User user);
+    List<PlayedSong> findPlayedSongsByUser(Users user);
 
-    PlayedSong findPlayedSongsBySongAndUser(Song song, User user);
+    PlayedSong findPlayedSongsBySongAndUser(Song song, Users user);
 
 }
