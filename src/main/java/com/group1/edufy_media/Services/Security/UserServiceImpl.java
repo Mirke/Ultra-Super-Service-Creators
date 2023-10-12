@@ -67,5 +67,26 @@ public class UserServiceImpl implements UserService{
     return allSongs;
   }
 
+  @Override
+  public void userPlaySong(int songId, String username) {
+    Song song = songRepository.findById(songId);
+    Users user = userRepository.findByUsername(username);
+    PlayedSong playedSong1 = playedSongRepository.findPlayedSongsBySongAndUser(song, user);
+    if (playedSong1 == null) {
+
+      PlayedSong playedSong = new PlayedSong();
+      playedSong.setSong(song);
+      playedSong.setUser(user);
+      playedSong.setUserHasPlayedSong(true);
+
+      playedSongRepository.save(playedSong);
+    }
+  }
+
+  @Override
+  public List<Users> getAllUsers() {
+    return userRepository.findAll();
+  }
+
 
 }

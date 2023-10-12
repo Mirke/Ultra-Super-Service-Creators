@@ -12,4 +12,6 @@ public interface UserService {
   Stream<GenrePreference> getUserGenrePreferences (Users user);
   List<PlayedSong> findPlayedSongsByUser (Users user);
   List <Song> getSongsNotPlayedByUser (String username);
+  void userPlaySong(int songId, String username);
+  List <Users> getAllUsers();
 }

@@ -1,3 +1,4 @@
+/*
 package com.group1.edufy_media.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -78,3 +79,4 @@ public class User {
 
 
 }
+*/
