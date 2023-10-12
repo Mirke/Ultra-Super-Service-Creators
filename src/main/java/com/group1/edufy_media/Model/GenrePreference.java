@@ -1,5 +1,6 @@
 package com.group1.edufy_media.Model;
 
+import com.group1.edufy_media.Model.Security.Users;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,8 +15,8 @@ public class GenrePreference {
     private int id;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "username")
+    private Users user;
 
     @ManyToOne
     @JoinColumn(name = "genre_id")
@@ -30,26 +31,11 @@ public class GenrePreference {
     public GenrePreference() {
     }
 
-    public GenrePreference(int id, Genre genre, User user, int timesLiked) {
+    public GenrePreference(int id, Users user, Genre genre, int timesLiked) {
         this.id = id;
+        this.user = user;
         this.genre = genre;
-        this.user = user;
         this.timesLiked = timesLiked;
-    }
-
-
-    // Methods:
-
-
-    // Getters and Setters:
-
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public int getId() {
@@ -58,6 +44,14 @@ public class GenrePreference {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     public Genre getGenre() {
