@@ -1,3 +1,4 @@
+/*
 package com.group1.edufy_media.Services;
 
 import com.group1.edufy_media.Model.GenrePreference;
@@ -19,3 +20,4 @@ public interface UserServiceInterface {
     List<Song> getSongsNotPlayedByUser(int userId);
 
 }
+*/

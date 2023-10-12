@@ -2,12 +2,14 @@ package com.group1.edufy_media.Controllers;
 
 
 import com.group1.edufy_media.Model.Album;
+import com.group1.edufy_media.Model.Security.Users;
 import com.group1.edufy_media.Repositories.PlayedSongRepository;
 import com.group1.edufy_media.Services.*;
 
 import com.group1.edufy_media.Model.*;
 
 
+import com.group1.edufy_media.Services.Security.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -126,8 +128,8 @@ public class CustomerController {
     }
 
     @GetMapping("/getAllUsers")
-    public List<User> getAllUsers(){
-        return userService.findAll();
+    public List<Users> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     @GetMapping("/getAllPlayedSongs")
@@ -138,23 +140,23 @@ public class CustomerController {
     }
 
     @GetMapping("/getUsersPlayedSongs")
-    public List<PlayedSong> getUsersPlayedSongs(@RequestBody User user){
+    public List<PlayedSong> getUsersPlayedSongs(@RequestBody Users user){
 
         return userService.findPlayedSongsByUser(user);
 
     }
 
-    @GetMapping("/UserPlaySong/{song-id}/{user-id}")
-    public void playSong(@PathVariable("song-id") int songId, @PathVariable("user-id") int userId){
+    @GetMapping("/UserPlaySong/{song-id}/{username}")
+    public void playSong(@PathVariable("song-id") int songId, @PathVariable("username") String username){
 
-        userService.userPlaySong(songId, userId);
+        userService.userPlaySong(songId, username);
 
     }
 
-    @GetMapping("/getSongsNotPlayedByUser/{user-id}")
-    public List<Song> getSongsNotPlayedByUser(@PathVariable("user-id") int userId){
+    @GetMapping("/getSongsNotPlayedByUser/{username}")
+    public List<Song> getSongsNotPlayedByUser(@PathVariable("username") String username){
 
-        return userService.getSongsNotPlayedByUser(userId);
+        return userService.getSongsNotPlayedByUser(username);
 
     }
 
@@ -162,7 +164,7 @@ public class CustomerController {
     // Endpoint in development:
 
     @GetMapping("/getUsersGenrePreferences")
-    public Stream<GenrePreference> getUsersGenrePreferences(@RequestBody User user){
+    public Stream<GenrePreference> getUsersGenrePreferences(@RequestBody Users user){
 
         return userService.getUserGenrePreferences(user);
 
