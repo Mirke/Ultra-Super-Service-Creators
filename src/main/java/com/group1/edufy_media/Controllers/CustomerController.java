@@ -81,20 +81,20 @@ public class CustomerController {
 
     }
 
-    @GetMapping("/getAllPodcastCreators/")
+    @GetMapping("/getAllPodcastCreators")
     public List<PodcastCreator> getAllPodcastCreators(){
         return podcastCreatorService.getAllPodcastCreators();
     }
 
-    @GetMapping("/getAllMediaOnServer/")
+    @GetMapping("/getAllMediaOnServer")
     public List<Media> getAllMediaOnServer(){
         return mediaService.findAllMedia();
     }
 
-    @GetMapping("/sortMediaByGenreId/")
+    @GetMapping("/sortMediaByGenreId")
     public Stream<Media> sortMediaByGenreId(){return mediaService.sortAllMediaByGenre();}
 
-    @GetMapping("/sortMediaByMediaTypeId/")
+    @GetMapping("/sortMediaByMediaTypeId")
     public Stream<Media> getAllVideo(){return mediaService.sortAllMediaByMediaType();}
 
     @GetMapping("/getMediaTypeById/{media_type_id}")
@@ -107,22 +107,22 @@ public class CustomerController {
         return mediaService.getGenreById(genre_id);
     }
 
-    @PutMapping("/addThumb/")
+    @PutMapping("/addThumb")
     public void getMedia(@RequestBody Song song){
         thumbRatingService.addThumbRatingToMediaItem(song);
     }
 
-    @GetMapping("/giveThumbsUp/{song_id}")
-    public void giveThumbsUp(@PathVariable("song_id") int song_id){
-        thumbRatingService.giveThumbsUp(song_id);
+    @GetMapping("/giveThumbsUp/{mediaType}/{song_id}")
+    public void giveThumbsUp(@PathVariable("song_id") int song_id, @PathVariable String mediaType){
+        thumbRatingService.giveThumbsUp(song_id, mediaType);
     }
 
-    @GetMapping("/giveThumbsDown/{song_id}")
-    public void giveThumbsDown(@PathVariable("song_id") int song_id){
-        thumbRatingService.giveThumbsDown(song_id);
+    @GetMapping("/giveThumbsDown/{mediaType}/{song_id}")
+    public void giveThumbsDown(@PathVariable("song_id") int song_id, @PathVariable String mediaType){
+        thumbRatingService.giveThumbsDown(song_id, mediaType);
     }
 
-    @GetMapping("/getMostPopularSong/")
+    @GetMapping("/getMostPopularSong")
     public Optional<Song> getMostPopularSong(){
         return thumbRatingService.mostLikedSong();
     }
