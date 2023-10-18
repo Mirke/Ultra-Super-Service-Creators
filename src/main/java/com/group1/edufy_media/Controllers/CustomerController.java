@@ -20,6 +20,7 @@ import java.util.stream.Stream;
 @RestController
 @RequestMapping("/api/edufy")
 public class CustomerController {
+
     //properties
     @Autowired
     private AlbumService albumService;
@@ -78,7 +79,6 @@ public class CustomerController {
     @GetMapping("/getAllGenres/")
     public List<Genre> getAllGenres(){
         return genreService.getAllGenres();
-
     }
 
     @GetMapping("/getAllPodcastCreators")
@@ -169,16 +169,6 @@ public class CustomerController {
         return userService.getUserGenrePreferences(user);
 
     }
-
-
-
-
-
-
-
-
-
-
 
 //    @GetMapping("/findAllMediaByQuery/")
 //    public List<Optional> getAllMediaEntitiesByQuery(){return mediaService.getAllMediaEntitiesByQuery();}

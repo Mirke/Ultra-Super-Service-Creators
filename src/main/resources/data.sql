@@ -76,6 +76,7 @@ INSERT INTO video (media_name, release_date, genre_id, media_type_id, video_crea
                 ('Moussa'),
                 ('Mikael'),
                 ('Andreas');*/
+
 INSERT INTO users (username, password, enabled)
 VALUES
     ('André YES!', '{noop}asd', true),
